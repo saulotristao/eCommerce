@@ -32,7 +32,7 @@ public class Products_platforms_picesMenu {
 
                 switch (index) {
                     case 1:
-                         
+
                         break;
                     case 2:
 
