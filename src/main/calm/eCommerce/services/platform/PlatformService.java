@@ -17,10 +17,18 @@ public class PlatformService {
     private ResultSet resultSet = null;
     private DBService dbService;
 
+    /*
+
+     */
     public PlatformService() {
         dbService = new DBService();
     }
 
+
+    /**
+     * delete an platform
+     * @param id
+     */
     public void deletingPlatform(int id) {
         try{
             // creating connection
@@ -40,6 +48,14 @@ public class PlatformService {
             dbService.close(preparedStatement, connection);
         }
     }
+
+    /**
+     * updating a platform
+     * @param id
+     * @param name
+     * @param url
+     * @param sales_fee
+     */
 
     public void updatingPlaform(int id, String name, String url, double sales_fee) {
         try{
@@ -66,6 +82,9 @@ public class PlatformService {
 
     }
 
+    /**
+     * listing all plataforms in a table
+     */
     public void listingAllPlatforms() {
         try{
             //creating the connection
@@ -90,6 +109,13 @@ public class PlatformService {
 
     }
 
+    /**
+     * method to help transform the lines of the table in objects
+     * to be print
+     * @param resultSet
+     * @return
+     * @throws Exception
+     */
     public ArrayList<Platform> mappingPlatforms(ResultSet resultSet) throws Exception{
 
         ArrayList<Platform> result = new ArrayList();
@@ -107,6 +133,13 @@ public class PlatformService {
         }
     }
 
+    /**
+     * method to create a plaform in the database
+     *
+     * @param name
+     * @param url
+     * @param sales_fee
+     */
     public void createNewPlatformDB(String name, String url , double sales_fee) {
         try{
             // creating the connection

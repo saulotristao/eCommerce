@@ -16,6 +16,12 @@ public class Products_platforms_picesServices {
     ResultSet resultSet = null;
     Statement statement = null;
 
+    /**
+     * Method to create a PPP in the table
+     * @param product_id
+     * @param platform_id
+     * @param price
+     */
     public void createPPP(int product_id, int platform_id, double price){
 
         try{
@@ -42,13 +48,20 @@ public class Products_platforms_picesServices {
 
     }
 
+    /**
+     * Method to list all PPPs in the table
+     *
+     */
+
     public  void listAllPPP(){
+
         try{
             connection = db.getConnection();
 
             statement = connection.createStatement();
+            System.out.println("before query");
 
-            resultSet = statement.executeQuery("select * from eCommerce.products_platforms_pices");
+            resultSet = statement.executeQuery("SELECT * FROM eCommerce.products_platforms_pices;");
 
             ArrayList<PPP> ppplist = mappingPPP(resultSet);
 
@@ -65,13 +78,21 @@ public class Products_platforms_picesServices {
         System.out.println("This is all PPPs");
     }
 
+    /**
+     * Support method to list all PPPs
+     * @param resultSet
+     * @return
+     */
+
     public ArrayList<PPP> mappingPPP(ResultSet resultSet) {
 
             ArrayList<PPP> result = new ArrayList();
             try {
                 while (resultSet.next()) {
-                    PPP temp = new PPP(resultSet.getInt("product_id"),resultSet.getInt("platform_id"),
+                    PPP temp = new PPP(resultSet.getInt("id"),resultSet.getInt("product_id"),resultSet.getInt("platform_id"),
                             resultSet.getDouble("price"));
+
+                    result.add(temp);
                 }
             }catch  (Exception e){
                e.getStackTrace();
@@ -80,18 +101,27 @@ public class Products_platforms_picesServices {
 
     }
 
+    /**
+     * Method to update the PPPs
+     * @param product_id
+     * @param platform_id
+     * @param price
+     * @param id
+     */
 
-    public void updatePPP(int platform_id, double price, int id){
+    public void updatePPP(int product_id, int platform_id, double price, int id){
         try{
             connection = db.getConnection();
 
-            preparedStatement = connection.prepareStatement("UPDATE `eCommerce`.`products_platforms_pices` SET `platform_id`='?', `price`='?' WHERE `id`='?';");
+            preparedStatement = connection.prepareStatement("UPDATE `eCommerce`.`products_platforms_pices` SET `product_id`=? ,`platform_id`= ? , `price`= ? WHERE `id`= ? ;");
 
-            preparedStatement.setInt(1, platform_id);
+            preparedStatement.setInt(1, product_id);
 
-            preparedStatement.setDouble(2, price);
+            preparedStatement.setInt(2, platform_id);
 
-            preparedStatement.setInt(3, id);
+            preparedStatement.setDouble(3, price);
+
+            preparedStatement.setInt(4, id);
 
             preparedStatement.executeUpdate();
 
@@ -107,17 +137,23 @@ public class Products_platforms_picesServices {
         }
     }
 
+    /**
+     * method to delete a PPP
+     * @param id
+     */
+
     public void deletePPP(int id){
         try{
             connection = db.getConnection();
 
-            preparedStatement = connection.prepareStatement("delete from e.Commerce.products_platforms_pices where id = ?;");
+            preparedStatement = connection.prepareStatement("delete from eCommerce.products_platforms_pices where id = ?;");
 
             preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
 
-            System.out.println("PPP ");
+            System.out.println("PPP deleted");
+
 
         }catch ( Exception e ){
 

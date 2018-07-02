@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 public class ProductMenu {
 
+    /**
+     * The Product menu is the opening for all the product method,
+     * from here you can select all methods for products
+     */
     public void menuProduct(){
 
         ProductService example = new ProductService();

@@ -1,7 +1,9 @@
 package main.calm.eCommerce.model;
 
 public class PPP {
-
+    /**
+     * pojo por Produc Platform Price table
+     */
     int id;
     int product_id;
     int platform_id;

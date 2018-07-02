@@ -1,13 +1,20 @@
 package main.calm.eCommerce;
 
+import main.calm.eCommerce.model.Product;
 import main.calm.eCommerce.services.Product.ProductMenu;
 import main.calm.eCommerce.services.database.DBService;
 import main.calm.eCommerce.services.platform.PlatformMenu;
+import main.calm.eCommerce.services.ppp.Products_platforms_picesMenu;
 
 import java.util.Scanner;
 
 public class Controller {
 
+    /**
+     * The main method directs the user to the 3 menus: Platform Menu, Product Menu and PPP Menu.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int index2 = 0;
         Controller example2 = new Controller();
@@ -39,7 +46,8 @@ public class Controller {
                         break;
                     case 3:
                         System.out.println("entering in ppp control ");
-                        example2.controllerPPP();
+                        Products_platforms_picesMenu ppp = new Products_platforms_picesMenu();
+                        ppp.controllerPPP();
                         break;
                     case 4:
                         System.out.println("Exiting ");

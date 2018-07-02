@@ -1,5 +1,8 @@
 package main.calm.eCommerce.model;
 
+/**
+ * pojo for product
+ */
 public class Product {
 
     int id;

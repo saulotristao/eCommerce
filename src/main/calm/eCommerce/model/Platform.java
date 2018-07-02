@@ -1,5 +1,9 @@
 package main.calm.eCommerce.model;
 
+/**
+ * pojo for Plaforms
+ *
+ */
 public class Platform {
 
     int id;

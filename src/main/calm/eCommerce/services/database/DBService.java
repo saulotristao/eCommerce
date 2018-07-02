@@ -65,7 +65,7 @@ public class DBService {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             responseConnection = DriverManager.getConnection("jdbc:mysql://localhost/eCommerce?" +
-                    "user=root&password=&useSSL=false&serverTimezone=UTC");
+                    "user=root&password=newpassword&useSSL=false&serverTimezone=UTC");
 
         }catch (Exception e){
             e.getStackTrace();

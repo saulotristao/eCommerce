@@ -22,6 +22,14 @@ public class ProductService {
         database = new DBService();
     }
 
+    /**
+     * Updating a product give the user the ability to update a product in the table
+     *
+     * @param id - product id
+     * @param p_name - product name
+     * @param p_description - product description
+     * @throws Exception
+     */
     public void updatingAProdcuct (int id, String p_name, String p_description) throws Exception{
         try{
             connection = database.getConnection();
@@ -47,6 +55,11 @@ public class ProductService {
         }
     }
 
+    /**
+     * method to delete a product in the table
+     *
+     * @param id
+     */
     public void deletingAProduct(int id){
         try{
             connection= database.getConnection();
@@ -67,6 +80,10 @@ public class ProductService {
         }
     }
 
+    /**
+     * Method to show all product in the table
+     * @throws Exception
+     */
     public void listingAllProducts() throws Exception {
         ArrayList<Product> temp = new ArrayList();
 
@@ -97,6 +114,13 @@ public class ProductService {
         }
     }
 
+    /**
+     * method to transfor the table in a arraylist of products
+     *
+     * @param a
+     * @return
+     * @throws Exception
+     */
     public ArrayList<Product> MapResultProducts(ResultSet a) throws Exception{
         ArrayList<Product> result = new ArrayList<>();
         try {
@@ -112,6 +136,12 @@ public class ProductService {
         }
     }
 
+    /**
+     * Method to insert a new product in a table
+     * @param p_name - product name
+     * @param p_description - product description
+     * @throws Exception
+     */
 
     public void createNewProductInDB ( String p_name, String p_description) throws Exception{
 
